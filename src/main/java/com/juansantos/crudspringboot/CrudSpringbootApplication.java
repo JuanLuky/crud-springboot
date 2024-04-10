@@ -24,9 +24,9 @@ public class CrudSpringbootApplication {
 			courseRepository.deleteAll();
 
 			Courses c = new Courses();
-			c.setName("Angular");
-			c.setCategory("Front-end");
-			c.setLanguage("JavaScript");
+			c.setName("Spring");
+			c.setCategory("Back-end");
+			c.setLanguage("Java");
 
 			courseRepository.save(c);
 		};
