@@ -33,6 +33,7 @@ public class CoursesCrontroller {
     public Courses create(@RequestBody Courses course) {
         return courseRepository.save( course );
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<Courses> update(@PathVariable Long id, @RequestBody Courses course) {
         return courseRepository.findById(id)
@@ -46,4 +47,16 @@ public class CoursesCrontroller {
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        return courseRepository.findById(id)
+                .map(recordFound -> {
+                    courseRepository.deleteById(id);
+
+                    return ResponseEntity.noContent().<Void>build();
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }
