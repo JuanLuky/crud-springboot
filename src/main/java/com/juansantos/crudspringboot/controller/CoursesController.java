@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/courses")
 @AllArgsConstructor
-public class CoursesCrontroller {
+public class CoursesController {
 
     private final CourseRepository courseRepository;
 
@@ -40,7 +40,6 @@ public class CoursesCrontroller {
                 .map(recordFound -> {
                     recordFound.setName(course.getName());
                     recordFound.setCategory(course.getCategory());
-                    recordFound.setLanguage(course.getLanguage());
 
                     Courses updated = courseRepository.save(recordFound);
                     return ResponseEntity.ok().body(updated);

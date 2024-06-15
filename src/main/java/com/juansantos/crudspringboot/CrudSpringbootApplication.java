@@ -16,21 +16,4 @@ public class CrudSpringbootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CrudSpringbootApplication.class, args);
 	}
-
-	@Bean
-	CommandLineRunner initDB(CourseRepository courseRepository) {
-
-        return args -> {
-			courseRepository.deleteAll();
-
-			Courses c = new Courses();
-			c.setName("Spring");
-			c.setCategory("Back-end");
-			c.setLanguage("Java");
-
-			courseRepository.save(c);
-		};
-
-    }
-
 }
