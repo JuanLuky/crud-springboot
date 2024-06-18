@@ -16,6 +16,7 @@ import org.hibernate.validator.constraints.Length;
 @SQLDelete(sql = "UPDATE tb_filiais SET status = 'Inativo' WHERE id = ?")
 @Where(clause = "status = 'Ativo'")
 public class Courses {
+
     @Id
     @GeneratedValue( strategy =  GenerationType.AUTO)
     @JsonProperty("_id")
