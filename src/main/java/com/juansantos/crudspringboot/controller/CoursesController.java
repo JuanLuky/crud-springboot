@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -27,8 +28,8 @@ public class CoursesController {
     private CourseService courseService;
 
     @GetMapping
-    public @ResponseBody List<Courses> list() {
-        return courseRepository.findAll();
+    public List<Courses> findAllByOrderByOrderIndexAsc() {
+        return courseRepository.findAll(Sort.by(Sort.Direction.ASC, "orderIndex"));
     }
 
     @GetMapping("/time")

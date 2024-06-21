@@ -18,7 +18,7 @@ import org.hibernate.validator.constraints.Length;
 public class Courses {
 
     @Id
-    @GeneratedValue( strategy =  GenerationType.AUTO)
+    @GeneratedValue( strategy =  GenerationType.IDENTITY)
     @JsonProperty("_id")
     private Long id;
 
@@ -38,5 +38,8 @@ public class Courses {
     @Pattern(regexp = "Ativo|Inativo")
     @Column(length = 10, nullable = false)
     private String status = "Ativo";
+
+    @NotNull
+    private Integer orderIndex;
 
 }

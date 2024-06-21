@@ -3,6 +3,7 @@ package com.juansantos.crudspringboot.service;
 import com.juansantos.crudspringboot.model.Courses;
 import com.juansantos.crudspringboot.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,6 @@ public class CourseService {
     private CourseRepository courseRepository;
 
     public List<Courses> buscarPorCategoria(String category) {
-        return courseRepository.findByCategory(category);
+        return courseRepository.findByCategory(category, Sort.by(Sort.Direction.ASC, "orderIndex"));
     }
 }
