@@ -1,5 +1,5 @@
 # Etapa 1: Build da aplicação
-FROM maven:3.8.6-openjdk-17 AS builder
+FROM maven:3.9.5-eclipse-temurin-21 AS builder
 
 # Defina o diretório de trabalho
 WORKDIR /app
@@ -17,7 +17,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Criar a imagem para execução
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:21-jre-alpine
 
 # Defina o diretório de trabalho
 WORKDIR /app
@@ -31,4 +31,5 @@ EXPOSE 8080
 # Execute o aplicativo
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
-# docker build -t crud-springboot .
+
+
