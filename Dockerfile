@@ -16,6 +16,8 @@ COPY src ./src
 # Compile e empacote o projeto
 RUN mvn clean package -DskipTests
 
+RUN mvn clean install
+
 # Etapa 2: Criar a imagem para execução
 FROM eclipse-temurin:21-jre-alpine
 
